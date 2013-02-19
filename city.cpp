@@ -14,14 +14,14 @@ int City::getX(){return x;}
 int City::getY(){return y;}
 QString City::getName(){return name;}
 
-void City::addConn(City &city){conn.append(city);}
+void City::addConn(int i){conn.append(i);}
 City::City(){}
 int City::nConn()
 {
     return conn.size();
 }
 
-const City & City::showConn(int i)
+int City::connIndex(int i)
 {
     return conn.at(i);
 }

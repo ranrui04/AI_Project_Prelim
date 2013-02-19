@@ -29,7 +29,7 @@ void read_coordinate(QString filename)
         for(int i = 0; i < city_list.size(); i++)
         {
             c = city_list.at(i);
-            QTextStream(stdout) << i+1 <<" "<< c->getName() << " " <<c->getX()<< " " << c->getY()<< endl;
+            QTextStream(stdout) << i+1 <<" "<< c.getName() << " " <<c.getX()<< " " << c.getY()<< endl;
         }
         f.close();
         QTextStream(stdout) << "City Location File Read Done!" << endl;
@@ -38,9 +38,14 @@ void read_coordinate(QString filename)
 
 int find_city(QString cname)
 {
-    for (int i = 0; i < city_list.size(); i++)
-        if (city_list.at(i).getName() == cname)
+    City c;
+    int i;
+    for (i = 0; i < city_list.size(); i++)
+    {
+        c = city_list.at(i);
+        if (c.getName() == cname)
             break;
+    }
     return i;
 }
 
@@ -57,22 +62,27 @@ void read_connection(QString filename)
             str = in.readLine().split(' ');
             if (str.at(0) != "END") {
                 int cur_c = find_city(str.at(0));
+                City city = city_list.at(cur_c);
                 for (int j = 0; j < str.at(1).toInt(); j++)
                 {
                     int con_c = find_city(str.at(2+j));
-                    city_list.at(cur_c).addConn(city_list.at(con_c));
+                    city.addConn(con_c);
                 }
+                city_list.replace(cur_c, city);
             }
         }while( str.at(0) != "END");
 
-        City c;
+        City c,d;
         for(int i = 0; i < city_list.size(); i++)
         {
             c = city_list.at(i);
-            QTextStream(stdout) << c->getName() << " " <<c.nConn()<< " " << endl;
+            QTextStream(stdout) << c.getName() << " " <<c.nConn()<< " ";
             for (int j = 0; j < c.nConn(); j++)
-                QTextStream(stdout) << c.showConn(j).getName() << " ";
-            QTextStream(stdout) <<endl;
+            {
+                d = city_list.at(c.connIndex(j));
+                QTextStream(stdout) << d.getName() << " ";
+            }
+            QTextStream(stdout) << "\n";
         }
         QTextStream(stdout) << "City Connection File Read Done!" <<endl;
     }

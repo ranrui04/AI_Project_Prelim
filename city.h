@@ -2,14 +2,14 @@
 #define CITY_H
 
 #include <QString>
-#include <QList>
+#include <QVector>
 
 class City
 {
 private:
     int x, y;
     QString name;
-    QList<City> conn;
+    QVector<int> conn;
     enum{VISITED,ELIMINATED,UNVISITED} state;
 public:
     City();
@@ -20,9 +20,9 @@ public:
     int getX();
     int getY();
     QString getName();
-    void addConn(City &city);
+    void addConn(int i);
     int nConn();
-    const City & showConn(int i);
+    int connIndex(int i);
 };
 
 #endif // CITY_H
