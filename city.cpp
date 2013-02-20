@@ -1,3 +1,8 @@
+/* this file is the definition of class City,
+ *which contains city location and connection
+ *information and related member functions   */
+
+
 #include "city.h"
 
 City::City(QString n, int xco, int yco)

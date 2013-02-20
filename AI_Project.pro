@@ -22,4 +22,5 @@ SOURCES += main.cpp \
 
 HEADERS += \
     city.h \
-    readfile.h
+    readfile.h \
+    search.h

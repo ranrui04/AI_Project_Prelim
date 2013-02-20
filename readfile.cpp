@@ -25,12 +25,12 @@ void read_coordinate(QString filename)
             }
         }while( str.at(0) != "END");
 
-        City c;
+        /*City c;
         for(int i = 0; i < city_list.size(); i++)
         {
             c = city_list.at(i);
             QTextStream(stdout) << i+1 <<" "<< c.getName() << " " <<c.getX()<< " " << c.getY()<< endl;
-        }
+        }*/
         f.close();
         QTextStream(stdout) << "City Location File Read Done!" << endl;
     }
@@ -72,7 +72,7 @@ void read_connection(QString filename)
             }
         }while( str.at(0) != "END");
 
-        City c,d;
+        /*City c,d;
         for(int i = 0; i < city_list.size(); i++)
         {
             c = city_list.at(i);
@@ -83,7 +83,8 @@ void read_connection(QString filename)
                 QTextStream(stdout) << d.getName() << " ";
             }
             QTextStream(stdout) << "\n";
-        }
+        }*/
+        f.close();
         QTextStream(stdout) << "City Connection File Read Done!" <<endl;
     }
 }

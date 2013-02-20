@@ -1,5 +1,10 @@
 #ifndef READFILE_H
 #define READFILE_H
+
+/* This file contains the functions for
+ *extracting information from input files
+ */
+
 #include <QString>
 
 void read_coordinate(QString filename = "locsamp.txt");
