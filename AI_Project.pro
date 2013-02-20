@@ -17,7 +17,8 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     readfile.cpp \
-    city.cpp
+    city.cpp \
+    search.cpp
 
 HEADERS += \
     city.h \
